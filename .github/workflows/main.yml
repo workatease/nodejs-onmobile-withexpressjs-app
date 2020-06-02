@@ -12,15 +12,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  install-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install npm dependencies
-        run: |
-          npm install
   build-android:
-    needs: install-and-test
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
@@ -29,7 +21,6 @@ jobs:
           npm install
       - name: Build Android Release
         run: |
-          chmod +x ./gradlew
           cd android && ./gradlew assembleRelease
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
