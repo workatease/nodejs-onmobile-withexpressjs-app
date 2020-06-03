@@ -1,11 +1,7 @@
 
 module.exports = function setupServer(callback, dataDir) {
 
-    var fs = require('fs');
-    fs.writeFile(dataDir + '/helloworld.txt', 'Hello World!', function (err) {
-        if (err) return console.log(err);
-        console.log('Hello World > helloworld.txt');
-    });
+    
     const express = require('express');
     const app = express();
     var PouchDB = require('pouchdb');
